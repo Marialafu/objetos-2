@@ -1,3 +1,193 @@
+// EJERCICIOS FÁCILES
+
+// # Ejercicios de Objetos
+
+// ## Lectura
+
+// 1️⃣ Saludar a través un objeto con nombre y ciudad; luego mostrar un mensaje de bienvenida en español.
+
+// Ejemplo entrada: {
+// name: "Camila",
+// city: "San Francisco"
+// }
+
+// Ejemplo salida: "Hola Camila, has llegado a San Francisco."
+
+const sayHi = info => {
+  console.log(`Hola ${info.name}, has llegado a ${info.city}`);
+};
+sayHi({
+  name: 'Camila',
+  city: 'San Francisco'
+});
+
+// 2️⃣ Verificar la mayoría de edad.
+
+// Ejemplo de entrada:
+// verificateUser({
+// name: "Abby",
+// age: 17
+// });
+
+// Ejemplo de salida:"Abby es menor de edad" o "Abby es mayor de edad"
+
+const validateYearsOld = user => {
+  user.age < 18
+    ? console.log(`${user.name} es menor de edad`)
+    : console.log(`${user.name} es mayor de edad`);
+};
+validateYearsOld({
+  name: 'Abby',
+  age: 18
+});
+
+// 3️⃣ Macarena y los promedios:
+// Array de objetos student con name y grades (array de números). Calcular y mostrar el promedio.
+
+// Ejemplo de entrada: calculateStudentAverage(
+// [{
+// name: "Bego",
+// grades: [8, 9, 10]
+// },
+// {
+// name: "Abby",
+// grades: [8, 9, 10]
+// }
+// ]);
+
+// Ejemplo de salida:
+// "El promedio de Bego es 9"
+// "El promedio de Abby es 9"
+
+const calculateAverage = students => {
+  students.forEach(student => {
+    const gradesArray = student.grades;
+    const sumGrades = gradesArray.reduce((acc, grades) => {
+      return acc + grades;
+    });
+    const averageGrades = sumGrades / student.grades.length;
+    console.log(`El promedio de ${student.name} es ${averageGrades}`);
+  });
+};
+calculateAverage([
+  {
+    name: 'Bego',
+    grades: [8, 9, 10]
+  },
+  {
+    name: 'Abby',
+    grades: [7, 8, 9]
+  }
+]);
+
+// ## Lectura y creación
+
+// 4️⃣ Macarena y la clasificación de números:
+// Crea una función classifyNumbers que reciba un objeto con:
+
+// numbers: Array de números a clasificar.
+
+// Debe imprimir un objeto con dos arrays: números pares e impares.
+
+// Ejemplo de entrada: classifyNumbers({numbers: [1, 2, 3, 4, 5, 6]});
+
+// Ejemplo de salida: {result: { even: [2, 4, 6], odd: [1, 3, 5] }}
+
+const classifyNumbers = data => {
+  const numbersList = data.numbers;
+
+  const result = {
+    even: [],
+    odd: []
+  };
+
+  numbersList.forEach(number =>
+    number % 2 === 0 ? result.even.push(number) : result.odd.push(number)
+  );
+
+  console.log(result);
+};
+classifyNumbers({ numbers: [1, 2, 3, 4, 5, 6] });
+
+// 5️⃣ Camila y la clasificación de edades:
+
+// Debe imprimir un objeto con la clasificación en tres arrays: children, teens y adults.
+
+// Ejemplo de entrada: classifyAges({ages: [5, 12, 15, 19, 32, 7, 17]});
+
+// Ejemplo de salida:{ result: { children: [5, 12, 7], teens: [15, 17], adults: [19, 32] }}
+
+const classifyAges = users => {
+  const agesList = users.ages;
+
+  const result = {
+    children: [],
+    teens: [],
+    adults: []
+  };
+
+  agesList.forEach(age => {
+    if (age < 15) {
+      result.children.push(age);
+    } else if (age < 18) {
+      result.teens.push(age);
+    } else if (age > 18) {
+      result.adults.push(age);
+    }
+  });
+
+  console.log(result);
+};
+classifyAges({ ages: [5, 12, 15, 19, 32, 7, 17] });
+
+// 6️⃣ Cambiar el estado de un semáforo. Objeto con state, elije uno de los tres ("red", "yellow", "green"). Pasar de red a green, luego a yellow, y de yellow a red, cíclicamente.
+
+// Ejemplo de entrada: changeTrafficLight({state: 'red'});
+// Ejemplo de salida: "El semáforo cambió a yellow"
+
+// Actualizar la propiedad state según el color actual y mostrar: "El semáforo cambió a ..."
+
+const changeTrafficLight = light => {
+  if (light.state === 'red') {
+    light.state = 'green';
+  } else if (light.state === 'green') {
+    light.state = 'yellow';
+  } else if (light.state === 'yellow') {
+    light.state = 'red';
+  }
+
+  console.log(`El semáforo cambió a ${light.state}`);
+};
+changeTrafficLight({ state: 'red' });
+
+// 7️⃣ Bego y la combinación de listas:
+// Crea una función combineLists que reciba un objeto listCombiner con:
+
+// names: Array de nombres.
+
+// surnames: Array de apellidos.
+
+// Debe devolver un objeto con todas las combinaciones posibles entre nombres y apellidos.
+
+// Ejemplo de entrada: combineLists({names: ['Alice', 'Bob'], surnames: ['Smith', 'Johnson']});
+
+// Ejemplo de salida: {combinations: [ 'Alice Smith', 'Alice Johnson', 'Bob Smith', 'Bob Johnson' ]}
+
+const combineLists = users => {
+  const combinations = [];
+
+  const namesList = users.names.map(name => {
+    const surnamesList = users.surname.map(surname => {
+      combinations.push(surname);
+    });
+  });
+
+  console.log(combinations);
+};
+combineLists({ names: ['Alice', 'Bob'], surnames: ['Smith', 'Johnson'] });
+
+// EJERCICIOS DIFICILES
+
 // ### Ejercicios de Objetos con Arrays, Bucles, Strings, Condicionales y Lógica
 
 // 1️⃣ Macarena y la validación de contraseñas:
