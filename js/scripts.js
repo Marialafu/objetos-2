@@ -24,54 +24,22 @@
 // }
 
 const userData = {
-    password: '',
-    isValid: false,
-    errors: []
-}
-
-const vowels = 'aeiuoáéíóú'
-const consonants = 'bcdfghjklmnñpqrstvwxyz'
-const numbers = '0123456789'
-
-const logPassword = password => {
-    userData.password = password
-}
+  password: '',
+  isValid: false,
+  errors: []
+};
 
 const validatePassword = password => {
+  if (password.length >= 8) {
+    userData.isValid = true;
+  } else {
+    userData.errors.push('Password must be at least 8 characters long.');
+  }
+  userData.password = password;
+  console.log(userData);
+};
 
-    const errors = []
-
-    if (password.length >= 8){
-        errors.push("Password must be at least 8 characters long.")
-    }
-
-    if (!/[A-Z]/.test(password)){
-        errors.push("Password must contain at least one uppercase letter.")
-    }
-
-    if (!/[a-z]/.test(password)){
-        errors.push("Password must contain at least one lowercase letter.")
-    }
-    
-    if (!/\d/.test(password)){
-        errors.push("Password must contain at least one number.")
-    }
-
-    const isValid = errors.length === 0
-
-    return {isValid, errors}
-}
-    
-
-
-
-const passwordData = password => {
-    logPassword(password)
-    validatePassword(password)
-}
-passwordData("1Contraseña")
-
-console.log(userData);
+validatePassword('1Contraghghghgh');
 
 // 2️⃣ Sabrina y el sistema de evaluación de estudiantes:
 // Crea una función evaluateStudents que reciba un objeto que representa una asignatura (subject). Este objeto debe tener las propiedades:
@@ -105,35 +73,16 @@ console.log(userData);
 // }
 
 const genericInfoAboutSubject = {
-    subjectName: 'Web Development',
-    teacher: 'Adrián',
-    students: {
-        Macarena: 8,
-        Bego: 4,
-        Abby: 6,
-        Camila: 3,
-        Sabrina:5
-         }
-}
-
-const evaluateStudents = (info) => {
-
-    const passedStudents = []
-    const students = genericInfoAboutSubject.students
-
-    for (const note of info){
-      if (note >= 5){
-        passedStudents.push(note)
-    }  
-    }
-    console.log(students);
-    
-    
-
-}
-evaluateStudents(genericInfoAboutSubject())
-
-
+  subjectName: 'Web Development',
+  teacher: 'Adrián',
+  students: {
+    Macarena: 8,
+    Bego: 4,
+    Abby: 6,
+    Camila: 3,
+    Sabrina: 5
+  }
+};
 
 // 3️⃣ Abby y la traducción de palabras:
 // Crea una función translateWords que reciba un objeto translationTask con:
@@ -162,6 +111,19 @@ evaluateStudents(genericInfoAboutSubject())
 // translator: "Abby",
 // translated: [ 'hola', 'mundo' ]
 // }
+
+const translateWords = translationTask => {
+  for (let word of translationTask.words) {
+    word = translationTask.dictionary.hello;
+    console.log(word);
+  }
+};
+translateWords({
+  projectName: 'Basic Translator',
+  translator: 'Abby',
+  words: ['hello', 'world'],
+  dictionary: { hello: 'hola', world: 'mundo' }
+});
 
 // 4️⃣ Macarena y la clasificación de números:
 // Crea una función classifyNumbers que reciba un objeto numberAnalysis con:
